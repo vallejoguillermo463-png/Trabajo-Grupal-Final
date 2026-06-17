@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos del Empleado</title>
+    <title>Detalles del Videojuego</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -16,7 +16,7 @@
     <div class="card shadow">
 
         <div class="card-header bg-info text-white">
-            <h3 class="mb-0">Datos del Empleado</h3>
+            <h3 class="mb-0">🎮 Detalles del Videojuego</h3>
         </div>
 
         <div class="card-body">
@@ -25,12 +25,12 @@
 
                 <div class="col-md-4 text-center">
 
-                    <?php if ($empleado['foto']) : ?>
-                        <img src="uploads/<?= $empleado['foto'] ?>"
+                    <?php if ($videojuego['imagen']) : ?>
+                        <img src="uploads/<?= $videojuego['imagen'] ?>"
                             class="img-fluid img-thumbnail"
                             width="250">
                     <?php else : ?>
-                        <p>Sin foto</p>
+                        <p>Sin imagen</p>
                     <?php endif; ?>
 
                 </div>
@@ -40,26 +40,31 @@
                     <table class="table table-bordered">
 
                         <tr>
-                            <th>Apellidos</th>
-                            <td><?= $empleado['apellidos'] ?></td>
+                            <th>Nombre</th>
+                            <td><?= $videojuego['nombre'] ?></td>
                         </tr>
 
                         <tr>
-                            <th>Nombres</th>
-                            <td><?= $empleado['nombres'] ?></td>
+                            <th>Género</th>
+                            <td><?= $videojuego['genero'] ?></td>
                         </tr>
 
                         <tr>
-                            <th>Fecha de ingreso</th>
-                            <td><?= $empleado['fecha_ingreso'] ?></td>
+                            <th>Precio</th>
+                            <td>$ <?= $videojuego['precio'] ?></td>
                         </tr>
 
                         <tr>
-                            <th>Estado</th>
+                            <th>Fecha de lanzamiento</th>
+                            <td><?= $videojuego['fecha_lanzamiento'] ?></td>
+                        </tr>
+
+                        <tr>
+                            <th>Stock</th>
                             <td>
-                                <?= $empleado['activo']
-                                    ? '<span class="badge bg-success">Activo</span>'
-                                    : '<span class="badge bg-danger">Inactivo</span>'
+                                <?= $videojuego['stock']
+                                    ? '<span class="badge bg-success">Disponible</span>'
+                                    : '<span class="badge bg-danger">Agotado</span>'
                                 ?>
                             </td>
                         </tr>
@@ -70,7 +75,8 @@
                         Volver
                     </a>
 
-                    <a href="index.php?action=edit&id=<?= $empleado['id'] ?>" class="btn btn-warning">
+                    <a href="index.php?action=edit&id=<?= $videojuego['id'] ?>"
+                        class="btn btn-warning">
                         Editar
                     </a>
 

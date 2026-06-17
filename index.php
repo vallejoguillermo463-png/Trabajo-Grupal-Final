@@ -1,13 +1,21 @@
 <?php
 
-require_once 'controllers/EmpleadoController.php';
+require_once 'controllers/VideojuegoController.php';
 
-$controller = new EmpleadoController();
+$controller = new VideojuegoController();
 
-$action = $_GET['action'] ?? 'index';
+$action = $_GET['action'] ?? 'inicio';
 
-switch($action)
+switch ($action)
 {
+    case 'inicio':
+        include 'views/inicio.php';
+        break;
+
+    case 'lista':
+        $controller->index();
+        break;
+
     case 'create':
         $controller->create();
         break;
@@ -33,5 +41,5 @@ switch($action)
         break;
 
     default:
-        $controller->index();
+        include 'views/inicio.php';
 }
